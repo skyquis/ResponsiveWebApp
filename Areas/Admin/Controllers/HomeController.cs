@@ -1,21 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ResponsiveWebApp;
 using ResponsiveWebApp.Models;
 
-namespace ResponsiveWebApp.Controllers
+namespace ResponsiveWebApp.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class HomeController : Controller
     {
-        [Route("/")]
+        [Route("[area]/")]
         public IActionResult Index()
         {
             return View();
         }
 
-        [Route("About")]
+        [Route("[area]/About")]
         public IActionResult About()
         {
-            return Content("Home controller, About action");
+            return Content("Home controller for Admin, About action");
         }
 
 
@@ -25,7 +25,7 @@ namespace ResponsiveWebApp.Controllers
             if (ModelState.IsValid)
             {
                 int age = user.AgeThisYear();
-                ViewBag.Result = $"Hi, {user.Name}! You will be {age} years old on December 31st of this year.";
+                ViewBag.Result = $"Hi, Admin {user.Name}! You will be {age} years old on December 31st of this year.";
 
             }
             return View("Index");

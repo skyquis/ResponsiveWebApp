@@ -26,6 +26,18 @@ namespace ResponsiveWebApp
 
             app.UseAuthorization();
 
+            // Admin Area 
+            app.MapAreaControllerRoute(
+                name: "admin",
+                areaName: "Admin",
+                pattern: "Admin/{controller=Home}/{action=Index}/{id?}");
+
+            app.MapControllerRoute(
+                name: "customRoute",
+                pattern: "{controller=Home}/{action=CustomRoute}/{id?}");
+
+
+            // least specific route
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");

@@ -1,0 +1,32 @@
+﻿@model User
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/styles.css">
+    <title>FirstResponsiveWebAppLastName</title>
+</head>
+<body>
+    <div class="container">
+        <form asp-controller="Home" asp-action="CalculateAge" method="post">
+            <label asp-for="Name">Name:</label>
+            <input asp-for="Name" class="form-control" required>
+
+            <label asp-for="BirthYear">Year of Birth:</label>
+            <input asp-for="BirthYear" type="number" class="form-control" min="1900" max="2024" required>
+
+            <button type="submit">Submit</button>
+            <button asp-action="ClearInputs" type="button">Clear</button>
+        </form>
+
+        <div id="result">
+            @if (ViewBag.Result != null)
+            {
+                <p>@Html.Raw(ViewBag.Result)</p>
+            }
+        </div>
+    </div>
+</body>
+</html>
